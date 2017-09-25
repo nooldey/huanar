@@ -79,13 +79,20 @@ ul {
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { State } from 'vuex-class'
+import { State,Action } from 'vuex-class'
 import { Spend } from '../types'
 
 @Component
 export default class Chart extends Vue {
+  /* data */
   tabs: Array<string> = ['花费', '金额', '时间']
+  /* store */
   @State(state => state.spends.fee) list: Spend[]
+  @Action('initList') getList:Function
+  /* lifecycle */
+  created () {
+    this.getList()
+  }
 }
 </script>
 

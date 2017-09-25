@@ -8,8 +8,8 @@ Vue.config.productionTip = false
 
 /* register filters */
 for (let k in filters) {
-  let value:any = (<any>filters)[k]
-  Vue.filter(k,value)
+  let value: any = (<any>filters)[k]
+  Vue.filter(k, value)
 }
 
 new Vue({
