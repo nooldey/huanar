@@ -91,7 +91,7 @@ export default class Chart extends Vue {
   @Action('initList') getList:Function
   /* lifecycle */
   created () {
-    this.getList()
+    // this.getList()
   }
 }
 </script>
