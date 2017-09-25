@@ -19,12 +19,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-
-interface Spend {
-  name: string;
-  cost: number;
-  createOn: any;
-}
+import { Spend } from '../types'
 
 @Component
 export default class Addtip extends Vue {
