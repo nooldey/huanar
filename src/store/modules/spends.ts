@@ -1,4 +1,4 @@
-import { Module } from 'vuex'
+import { Module,MutationTree,ActionTree } from 'vuex'
 import { Spend } from '../../types'
 
 interface State {
@@ -6,17 +6,34 @@ interface State {
 }
 
 const state: State = {
-    fee: [
-        {
-            name: '手机话费',
-            cost: 100,
-            createOn: '2017-09-24'
-        }
-    ]
+    fee: []
 }
 
+const mutations: MutationTree<State> = {
+    "PUSH_TIP": (status: State, item) => {
+        status.fee.push(item)
+    }
+}
+
+const actions: ActionTree<State,object> = {
+    addSpend({state,commit},item) {
+        return new Promise((resolve,reject) => {
+            const vf = state.fee.some(f => f.name===item.name&&f.createOn===item.createOn)
+            if (!vf) {
+                commit("PUSH_TIP",item)
+                resolve()
+            } else {
+                reject('exist')
+            }
+        })
+    }
+}
+
+
 const spends: Module<State, object> = {
-    state
+    state,
+    mutations,
+    actions
 }
 
 export default spends

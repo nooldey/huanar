@@ -1,0 +1,60 @@
+@import './reset';
+
+/* col-panels */
+
+.main-wrap {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 35px;
+    .logo {
+      max-width: 80px;
+      height: auto;
+    }
+  }
+  
+  /* components */
+  
+  .z-btn {
+    display: inline-block;
+    padding: 8px 25px;
+    font-size: initial;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+    &.info {
+      color: #fff;
+      background-color: #0A90CE;
+      border: 0 none;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  input {
+    width: 200px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* form tables */
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+      margin: 10px auto;
+    }
+    .z-btn {
+      margin-top: 15px;
+    }
+  }
+  
+  .grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
