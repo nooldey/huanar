@@ -16,7 +16,6 @@ for (let k in filters) {
 router.beforeEach((to, from, next) => {
   let tk = localStorage.getItem('z-token')
   if (tk) {
-    alert(tk)
     if (to.path === '/login') {
       next({ path: '/home' })
     } else {

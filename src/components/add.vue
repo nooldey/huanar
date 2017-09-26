@@ -45,6 +45,7 @@ export default class Addtip extends Vue {
       return alert('请选择消费日期')
     }
     this.pushTip(o).then(() => {
+      alert("提交成功！")
       this.newTip = { name: '', cost: 0, createOn: '' }
     }).catch(() => {
       alert("添加失败，该条目已存在")

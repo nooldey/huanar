@@ -27,7 +27,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Action, State } from 'vuex-class'
-import { handleErr } from '@/extend/utils'
+import { handleErr } from '../extend/utils'
 
 @Component
 export default class Auth extends Vue {
