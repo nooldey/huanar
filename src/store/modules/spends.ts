@@ -44,8 +44,8 @@ const actions: ActionTree<State, object> = {
     async uploadTip({ state, commit }, item) {
         const SpendTip = AV.Object.extend(database)
         const tip = new SpendTip()
-        // const owner = localStorage.getItem('z-id') || AV.User.current()
-        const owner = AV.User.current()
+        const owner = localStorage.getItem('z-id') || AV.User.current()
+        // const owner = AV.User.current()
         tip.set('owner', owner)
         await tip.save(item)
         await commit("PUSH_TIP", item)
