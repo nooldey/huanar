@@ -12,6 +12,25 @@ for (let k in filters) {
   Vue.filter(k, value)
 }
 
+/* router.check */
+router.beforeEach((to, from, next) => {
+  let tk = localStorage.getItem('z-token')
+  if (tk) {
+    alert(tk)
+    if (to.path === '/login') {
+      next({ path: '/home' })
+    } else {
+      next()
+    }
+  } else {
+    if (to.path !== '/login') {
+      next({ path: '/login' })
+    } else {
+      next()
+    }
+  }
+})
+
 new Vue({
   el: '#app',
   router,
