@@ -14,7 +14,7 @@
     </p>
     <p>
       <span class="z-btn info" @click="submit">提交</span>
-      <router-link class="z-btn" to="/">返回列表</router-link>
+      <router-link class="z-btn" to="/chart">返回列表</router-link>
     </p>
   </section>
 </template>
