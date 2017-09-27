@@ -23,12 +23,16 @@ const mutations: MutationTree<State> = {
 
 const actions: ActionTree<State, object> = {
     async initList({ state, commit }) {
-        const query = new AV.Query(database)
+        if (state.fee.length>0) {
+            return;
+        }
+        const query = new AV.Query(database).equalTo('owner', AV.User.current())
         let list: Array<any> = []
         query.include('name')
         query.include('cost')
         query.include('createOn')
         await query.find().then((res: Array<any>) => {
+            console.log('list:',list)
             list = res.map(tip => tip.attributes)
         })
         await commit("INIT_TIP", list)
@@ -44,9 +48,7 @@ const actions: ActionTree<State, object> = {
     async uploadTip({ state, commit }, item) {
         const SpendTip = AV.Object.extend(database)
         const tip = new SpendTip()
-        const owner = localStorage.getItem('z-id') || AV.User.current()
-        // const owner = AV.User.current()
-        tip.set('owner', owner)
+        tip.set('owner', AV.User.current())
         await tip.save(item)
         await commit("PUSH_TIP", item)
     }

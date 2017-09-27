@@ -42,7 +42,7 @@ export const routes: RouteConfig[] = [
 
 export default new Router({
   routes: routes,
-  mode: 'history',
-  base: '/',
+  // mode: 'history',
+  // base: '/',
   linkActiveClass: 'nav_active'
 })

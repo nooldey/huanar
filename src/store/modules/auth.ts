@@ -28,7 +28,6 @@ const mutations: MutationTree<Account> = {
         status.email = res.email
         status.token = res.sessionToken
         localStorage.setItem('z-token', res.sessionToken)
-        localStorage.setItem('z-id',res.id)
     }
 }
 
@@ -41,7 +40,7 @@ const actions: ActionTree<Account, object> = {
             username: res.attributes.username,
             email: res.attributes.email,
             sessionToken: res._sessionToken,
-            id: res.id
+            // id: res.id
         })
         if (!res.emailVerified) {
             alert('为保护您的账户安全，请尽快完成邮箱验证')
@@ -58,7 +57,7 @@ const actions: ActionTree<Account, object> = {
             username: res.attributes.username,
             email: res.attributes.email,
             sessionToken: res._sessionToken,
-            id: res.id
+            // id: res.id
         })
     }
 }
