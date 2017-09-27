@@ -11,10 +11,17 @@
           {{ tab }}
         </span>
       </li>
-      <li class="grid" v-for="(item,idx) in list" :key="idx">
+      <li class="grid" v-if="showEdit && currentTip.objectId">
+        <input type="text" v-model="currentTip.name">
+        <input type="number" v-model="currentTip.cost">
+        <input type="date" v-model="currentTip.spendOn">
+        <span @click="submitEdit">确定</span>
+      </li>
+      <li class="grid" v-for="(item,idx) in list" :key="idx" v-if="!showEdit || (showEdit&&item.objectId!==currentTip.objectId)">
         <span>{{item.name}}</span>
         <span>{{item.cost | money}}</span>
         <span>{{item.spendOn | date}}</span>
+        <span @click="editTip(item)">编辑</span>
       </li>
       <li v-if="list.length<1">暂无消费记录</li>
     </ul>
@@ -56,6 +63,7 @@ ul {
       border-top: 1px solid #aaa;
     }
     span {
+      height: 100%;
       border-right: 1px solid #aaa;
       &:last-child {
         border: none;
@@ -85,13 +93,24 @@ import { Spend } from '../types'
 @Component
 export default class Chart extends Vue {
   /* data */
-  tabs: Array<string> = ['花费', '金额', '时间']
+  tabs: Array<string> = ['花费', '金额', '时间', '操作']
+  showEdit: Boolean = false
+  currentTip: any
   /* store */
   @State(state => state.spends.fee) list: Spend[]
   @Action('initList') getList: Function
   /* lifecycle */
   created() {
     this.getList()
+  }
+  /* methods */
+  editTip(o:Spend) {
+    this.currentTip = o
+    this.showEdit = true
+  }
+  submitEdit() {
+    this.showEdit = false
+    this.currentTip = null
   }
 }
 </script>

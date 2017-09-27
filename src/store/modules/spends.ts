@@ -31,6 +31,7 @@ const actions: ActionTree<State, object> = {
         query.include('name')
         query.include('cost')
         query.include('spendOn')
+        query.include('objectId')
         await query.find().then((res: Array<any>) => {
             console.log('list:',list)
             list = res.map(tip => tip.attributes)
