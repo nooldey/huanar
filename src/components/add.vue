@@ -10,7 +10,7 @@
     </p>
     <p>
       <label>时间：</label>
-      <input type="date" v-model="newTip.createOn">
+      <input type="date" v-model="newTip.spendOn">
     </p>
     <p>
       <span class="z-btn info" @click="submit">提交</span>
@@ -28,7 +28,7 @@ import { Spend } from '../types'
 @Component
 export default class Addtip extends Vue {
   /* data */
-  newTip: Spend = { name: '', cost: 0, createOn: '' }
+  newTip: Spend = { name: '', cost: 0, spendOn: '' }
 
   /* store-actions */
   @Action('addSpend') pushTip:Function
@@ -41,12 +41,12 @@ export default class Addtip extends Vue {
     if (!o.cost) {
       return alert('请填写消费金额')
     }
-    if (!o.createOn) {
+    if (!o.spendOn) {
       return alert('请选择消费日期')
     }
     this.pushTip(o).then(() => {
       alert("提交成功！")
-      this.newTip = { name: '', cost: 0, createOn: '' }
+      this.newTip = { name: '', cost: 0, spendOn: '' }
     }).catch(() => {
       alert("添加失败，该条目已存在")
     })

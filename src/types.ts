@@ -2,5 +2,5 @@
 export interface Spend {
     name: string;
     cost: number;
-    createOn: any;
+    spendOn: any;
 }

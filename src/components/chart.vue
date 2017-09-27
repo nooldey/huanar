@@ -14,7 +14,7 @@
       <li class="grid" v-for="(item,idx) in list" :key="idx">
         <span>{{item.name}}</span>
         <span>{{item.cost | money}}</span>
-        <span>{{item.createOn | date}}</span>
+        <span>{{item.spendOn | date}}</span>
       </li>
       <li v-if="list.length<1">暂无消费记录</li>
     </ul>

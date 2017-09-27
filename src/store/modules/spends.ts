@@ -30,7 +30,7 @@ const actions: ActionTree<State, object> = {
         let list: Array<any> = []
         query.include('name')
         query.include('cost')
-        query.include('createOn')
+        query.include('spendOn')
         await query.find().then((res: Array<any>) => {
             console.log('list:',list)
             list = res.map(tip => tip.attributes)
@@ -38,7 +38,7 @@ const actions: ActionTree<State, object> = {
         await commit("INIT_TIP", list)
     },
     async addSpend({ state, dispatch }, item) {
-        const vf = await state.fee.some(f => f.name === item.name && f.createOn === item.createOn)
+        const vf = await state.fee.some(f => f.name === item.name && f.spendOn === item.spendOn)
         if (!vf) {
             await dispatch('uploadTip', item)
         } else {
