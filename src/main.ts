@@ -12,6 +12,9 @@ for (let k in filters) {
   Vue.filter(k, value)
 }
 
+/* mixin Vue */
+Object.assign(Vue.prototype,{ $global: 'hello' })
+
 /* router.check */
 router.beforeEach((to, from, next) => {
   let tk = localStorage.getItem('z-token')

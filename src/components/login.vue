@@ -44,6 +44,9 @@ export default class Auth extends Vue {
 
     /* lifecycle */
     created() {
+        /* const vm:any = Vue.prototype;
+        console.log('global:',vm.$global) */
+
         let tk = localStorage.getItem('z-token')
         if (tk) {
             this.$router.push('/record')
