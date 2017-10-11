@@ -44,6 +44,7 @@ export default class Auth extends Vue {
 
     /* lifecycle */
     created() {
+        // 读取Vue的扩展属性用法范例：
         /* const vm:any = Vue.prototype;
         console.log('global:',vm.$global) */
 
