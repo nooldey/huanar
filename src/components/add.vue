@@ -5,12 +5,22 @@
       <input type="text" v-model="newTip.name">
     </p>
     <p>
+      <label>快速选择：</label>
+      <select v-model="newTip.name">
+        <option :value="t" v-for="t in tags" :key="t"></option>
+      </select>
+    </p>
+    <p>
       <label>费用：</label>
       <input type="number" v-model="newTip.cost">
     </p>
     <p>
       <label>时间：</label>
       <input type="date" v-model="newTip.spendOn">
+    </p>
+    <p>
+      <label>备注：</label>
+      <textarea cols="30" rows="10" v-model="newTip.remark"></textarea>
     </p>
     <p>
       <span class="z-btn info" @click="submit">提交</span>
@@ -28,7 +38,8 @@ import { Spend } from '../types'
 @Component
 export default class Addtip extends Vue {
   /* data */
-  newTip: Spend = { name: '', cost: 0, spendOn: '' }
+  newTip: Spend = { name: '', cost: 0, spendOn: '',remark: '' }
+  tags: Array<String> = ['话费充值','吃饭','买衣服','购物','红包']
 
   /* store-actions */
   @Action('addSpend') pushTip:Function
@@ -46,7 +57,7 @@ export default class Addtip extends Vue {
     }
     this.pushTip(o).then(() => {
       alert("提交成功！")
-      this.newTip = { name: '', cost: 0, spendOn: '' }
+      this.newTip = { name: '', cost: 0, spendOn: '',remark: '' }
     }).catch(() => {
       alert("添加失败，该条目已存在")
     })
