@@ -2,7 +2,6 @@
   <div class="hello">
     <h1>
       <span>消费总览</span>
-      <router-link class="go" to="/add">添加记录</router-link>
     </h1>
     <!-- 昨日消费总览 -->
     <ul>
@@ -23,7 +22,9 @@
         <span>{{item.spendOn | date}}</span>
         <span @click="editTip(item)">编辑</span>
       </li>
-      <li v-if="list.length<1">暂无消费记录</li>
+      <li v-if="list.length<1">
+        暂无消费记录,<router-link class="go" to="/add">添加记录</router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -45,6 +46,9 @@ h1 {
     flex: none;
     font-size: 14px;
   }
+}
+.go {
+  color: #0088dd;
 }
 
 ul {
@@ -104,7 +108,7 @@ export default class Chart extends Vue {
     this.getList()
   }
   /* methods */
-  editTip(o:Spend) {
+  editTip(o: Spend) {
     this.currentTip = o
     this.showEdit = true
   }

@@ -3,6 +3,6 @@ export interface Spend {
     name: string;
     cost: number;
     spendOn: any;
-    remark?: string;
+    remark: string;
     objectId?: any;
 }

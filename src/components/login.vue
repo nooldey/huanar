@@ -13,7 +13,7 @@
             <input type="text" v-model="email">
         </p>
         <p>
-            <span v-show="current=='login'" class="z-btn info" @click="submit">登录</span>
+            <span v-show="current=='login'" class="z-btn info" @click="submit" @keydown.enter="submit">登录</span>
             <span v-show="current=='regist'" class="z-btn info" @click="reg">注册</span>
         </p>
         <p class="register">

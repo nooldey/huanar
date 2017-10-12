@@ -5,9 +5,9 @@
       <input type="text" v-model="newTip.name">
     </p>
     <p>
-      <label>快速选择：</label>
+      <label>标签：</label>
       <select v-model="newTip.name">
-        <option :value="t" v-for="t in tags" :key="t"></option>
+        <option :value="t" v-for="t in tags" :key="t">{{ t }}</option>
       </select>
     </p>
     <p>
@@ -18,7 +18,7 @@
       <label>时间：</label>
       <input type="date" v-model="newTip.spendOn">
     </p>
-    <p>
+    <p class="remark">
       <label>备注：</label>
       <textarea cols="30" rows="10" v-model="newTip.remark"></textarea>
     </p>
@@ -38,11 +38,11 @@ import { Spend } from '../types'
 @Component
 export default class Addtip extends Vue {
   /* data */
-  newTip: Spend = { name: '', cost: 0, spendOn: '',remark: '' }
-  tags: Array<String> = ['话费充值','吃饭','买衣服','购物','红包']
+  newTip: Spend = { name: '', cost: 0, spendOn: '', remark: '' }
+  tags: Array<String> = ['话费充值', '吃饭', '买衣服', '购物', '红包']
 
   /* store-actions */
-  @Action('addSpend') pushTip:Function
+  @Action('addSpend') pushTip: Function
   /* methods */
   submit(): void {
     const o = Object.assign({}, this.newTip)
@@ -57,10 +57,18 @@ export default class Addtip extends Vue {
     }
     this.pushTip(o).then(() => {
       alert("提交成功！")
-      this.newTip = { name: '', cost: 0, spendOn: '',remark: '' }
+      this.newTip = { name: '', cost: 0, spendOn: '', remark: '' }
     }).catch(() => {
       alert("添加失败，该条目已存在")
     })
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.remark {
+  label {
+    vertical-align: top;
+  }
+}
+</style>
